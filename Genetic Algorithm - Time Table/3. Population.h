@@ -19,7 +19,10 @@ public:
 
 	explicit Population(const int population) {
 		members = std::vector<DNA>(population);
-		for (int i = 0; i < population; i++) { members.at(i) = DNA(totalExamDays); }
+		for (int i = 0; i < population; i++) {
+			courseCount = 0;
+			members.at(i) = DNA(totalExamDays);
+		}
 	}
 };
 
@@ -59,7 +62,9 @@ inline void doMating(std::vector<DNA>& parents, const int mutationRate, int tota
 		}
 
 		// Doing mutation according to above parameters
-		if (rand() % 1000 < mutationRate) { parents.at(i).genes.at(rand() % parents.at(i).genes.size()).randomize(); }
+		if (rand() % 1000 < mutationRate) {
+			parents.at(i).genes.at(rand() % parents.at(i).genes.size()).externallyRandomize();
+		}
 	}
 	// Sorting them from high to low
 	std::sort(parents.begin(), parents.end(),

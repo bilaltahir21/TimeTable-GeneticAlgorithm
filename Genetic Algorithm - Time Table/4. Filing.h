@@ -18,4 +18,5 @@ void doFiling(const std::string& registrationDataFile, const std::string& roomCa
 	generalInfoData(generalInfoFile, totalExamDays, examSlotsPerDay);
 	/******************************************************************************/
 	doMaxDNAFitness();
+	assignExams();
 }

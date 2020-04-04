@@ -11,6 +11,7 @@
 class Member {
 public:
 	int fitness;
+	int whatDayIsIt;
 	std::vector<int> object;
 	int slotsPerDay;
 	int noOfCourses;
@@ -27,7 +28,7 @@ public:
 
 	Member() = default;
 
-	Member(const int slotsPerDay, const int courses) {
+	Member(const int slotsPerDay, const int courses,int day) {
 		/*
 		 * Representing the gene in the form of a 1D
 		 * array with array index representing the course
@@ -38,6 +39,7 @@ public:
 		for (int i = 0; i < int(object.size()); i++) { object.at(i) = -1; }
 		this->noOfCourses = courses;
 		this->slotsPerDay = slotsPerDay;
+		this->whatDayIsIt = day;
 		randomize();
 		whatRoomCapacity();
 	}
@@ -87,8 +89,41 @@ public:
 		for (int i = 0; i < int(object.size()); i++) { this->object.at(i) = -1; }
 		// Here is the code for randomization
 		srand(time(NULL));
-		for (int i = 0; i < int(object.size()); i++) { this->object.at(i) = (rand() % slotsPerDay); }
+		// Handling that there should not be the same exam multiple days. And the exams come by randomization
+		for (int i = 0; i < examsInDay.at(whatDayIsIt); i++) {
+			this->object.at(shadow[courseCount++]) = (rand() % slotsPerDay);
+			scheduledExam[shadow[courseCount++]] = true;
+		}
 
+		/* Prepare data for pre-processing */
+		// Storing course at index
+		if (!map_course) {
+			map_course = nullptr;
+			map_course = new HashMap(slotsPerDay);
+		}
+		else { map_course = new HashMap(slotsPerDay); }
+		for (int i = 0; i < int(object.size()); i++) {
+			if (object.at(i) != -1) { map_course->hash.at(object.at(i)).push_back(i); }
+		}
+
+		// Storing slot at index
+		if (!map_slot) {
+			map_slot = nullptr;
+			map_slot = new HashMap(noOfCourses);
+		}
+		else { map_slot = new HashMap(noOfCourses); }
+		for (int i = 0; i < int(object.size()); i++) {
+			if (object.at(i) != -1) { map_slot->hash.at(i).push_back(object.at(i)); }
+		}
+	}
+
+	void externallyRandomize() {
+		for (int& i : object) {
+			if(i !=-1) {
+				i = (rand() % slotsPerDay);
+			}
+		}
+		
 		/* Prepare data for pre-processing */
 		// Storing course at index
 		if (!map_course) {

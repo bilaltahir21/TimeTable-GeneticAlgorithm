@@ -1,4 +1,7 @@
 #pragma once
+#include <random>
+
+
 #include "HashMap.h"
 
 // Data from "registration.data"
@@ -21,7 +24,31 @@ std::vector<int> roomCapacity;
 int totalRoomCapacity;
 
 // Map to check if an exam is already scheduled
-std::map<int, int> scheduledExam;
+std::map<int, bool> scheduledExam;
+// Array to store number of exams that can be
+// held in a day
+std::vector<int> examsInDay;
+std::vector<int> shadow;
+int courseCount = 0;
+// Function to evaluate these exams
+inline void assignExams() {
+	for (int i = 0; i < noOfCourses; i++) {
+		shadow.push_back(i);
+	}
+	std::shuffle(shadow.begin(), shadow.end(), std::mt19937(std::random_device()()));
+	for (int i = 0; i < noOfCourses; i++) {
+		scheduledExam[i] = false;
+	}
+	examsInDay.resize(totalExamDays);
+	const int lowerBound = int(floor(noOfCourses / totalExamDays));
+	for (int i = 0; i<totalExamDays; i++) { examsInDay.at(i) = lowerBound; }
+	int examsLeft = noOfCourses - (lowerBound * totalExamDays);
+	for (int i = noOfCourses - 1; i >= 0 && examsLeft != 0; i--) {
+		examsInDay.at(i)++;
+		examsLeft--;
+	}
+}
+
 
 // Maximum fitness a gene can have
 constexpr int MAX_FITNESS = 100000;

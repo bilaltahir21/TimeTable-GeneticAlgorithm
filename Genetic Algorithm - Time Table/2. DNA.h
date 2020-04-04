@@ -13,8 +13,12 @@ public:
 
 	DNA(const int numberOfDays) {
 		genes.resize(numberOfDays);
-		for (int i = 0; i < int(genes.size()); i++) { genes[i] = Member(examSlotsPerDay, noOfCourses); }
 		for (int i = 0; i < int(genes.size()); i++) {
+			courseCount = 0;
+			genes[i] = Member(examSlotsPerDay, noOfCourses,i);
+		}
+		for (int i = 0; i < int(genes.size()); i++) {
+			courseCount = 0;
 			genes[i].randomize();
 			genes[i].fitness = 0;
 		}
