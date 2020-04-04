@@ -1,0 +1,9 @@
+"registration_data.txt"
+It includes the registration data of students. The column represents the student and the row means the course.
+So, the 1 at data[i][j] means that student 'j' is registered in course 'i'
+
+"capacity_room.txt"
+It contains space separated room capacities available for scheduling.
+
+"genenral_info.txt"
+It define the total exam days followed by a single number giving the exam slots per day(for every room)

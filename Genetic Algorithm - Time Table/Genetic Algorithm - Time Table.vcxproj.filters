@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Filing">
+      <UniqueIdentifier>{f1845af6-79e6-47e9-bc5b-b0a846d41a87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Instructions">
+      <UniqueIdentifier>{81f425a1-c4dc-4573-89b8-782122377517}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{ad942786-314c-4d9b-890b-947a56cd2b17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{e8003b0f-526c-47a4-be77-67690a1163de}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="1. RegistrationData.h">
+      <Filter>Filing</Filter>
+    </ClInclude>
+    <ClInclude Include="2. RoomCapacity.h">
+      <Filter>Filing</Filter>
+    </ClInclude>
+    <ClInclude Include="3. GeneralInfo.h">
+      <Filter>Filing</Filter>
+    </ClInclude>
+    <ClInclude Include="4. Filing.h">
+      <Filter>Filing</Filter>
+    </ClInclude>
+    <ClInclude Include="1. Member.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="2. DNA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="3. Population.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="4. GeneralMember.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashMap.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="1. registration.data">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="2. capacity.room">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="3. general.info">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="instrucitons.txt">
+      <Filter>Instructions</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Driver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
