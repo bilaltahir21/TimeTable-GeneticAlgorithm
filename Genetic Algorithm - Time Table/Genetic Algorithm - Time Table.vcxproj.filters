@@ -21,6 +21,9 @@
     <Filter Include="Helpers">
       <UniqueIdentifier>{e8003b0f-526c-47a4-be77-67690a1163de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Local Search">
+      <UniqueIdentifier>{09c79375-8b37-4185-9075-d40393bd1ea5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="1. RegistrationData.h">
@@ -49,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="HashMap.h">
       <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Improve.h">
+      <Filter>Local Search</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

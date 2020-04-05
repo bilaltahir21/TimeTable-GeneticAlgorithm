@@ -30,18 +30,14 @@ std::vector<int> shadow;
 int courseCount = 0;
 // Function to evaluate these exams
 inline void assignExams() {
-	for (int i = 0; i < noOfCourses; i++) {
-		shadow.push_back(i);
-	}
+	for (int i = 0; i < noOfCourses; i++) { shadow.push_back(i); }
 	std::shuffle(shadow.begin(), shadow.end(), std::mt19937(std::random_device()()));
-	for (int i = 0; i < noOfCourses; i++) {
-		scheduledExam[i] = false;
-	}
+	for (int i = 0; i < noOfCourses; i++) { scheduledExam[i] = false; }
 	examsInDay.resize(totalExamDays);
 	const int lowerBound = int(floor(noOfCourses / totalExamDays));
-	for (int i = 0; i<totalExamDays; i++) { examsInDay.at(i) = lowerBound; }
+	for (int i = 0; i < totalExamDays; i++) { examsInDay.at(i) = lowerBound; }
 	int examsLeft = noOfCourses - (lowerBound * totalExamDays);
-	for (int i = examsInDay.size() - 1; i >= 0 && examsLeft != 0; i--) {
+	for (int i = int(examsInDay.size() - 1); i >= 0 && examsLeft != 0; i--) {
 		examsInDay.at(i)++;
 		examsLeft--;
 	}

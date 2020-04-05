@@ -1,21 +1,25 @@
 #include "3. Population.h"
 #include "4. Filing.h"
+#include "Improve.h"
 
 /* These values are the main controls */
 /*----------------------------------------------*/
 // We are going to use this for mutation of genes
 // 1000 = 100% -> 1 = .01% mutation rate
-constexpr int MUTATION_RATE = 100;
+constexpr int MUTATION_RATE = 100; // 1% Mutation
 // Number of parents for cross-over
-constexpr int ELIGIBLE_PARENTS = 40;
+constexpr int ELIGIBLE_PARENTS = 40; // Means 80
 // Our defined population size
 // Should be greater than "(2ELIGIBLE_PARENTS)"
 constexpr int POPULATION_SIZE = 100;
 /*----------------------------------------------*/
-int fitn = 0;
-int fitnCount = 0;
-bool fitnprocess = false;
+constexpr int ALLOWED_REPETITION = 1;
+int currentMaxFitness = 0;
+int repeatCount = 0;
 int totalFitness = 0;
+// Stop when there is no improvement
+bool stopAlgorithm = false;
+// ------Above is the Guage Cluster for Algorithm
 
 auto main() -> int   {
 	// So that everything goes totally randomized
@@ -24,7 +28,7 @@ auto main() -> int   {
 
 	// Loading all files
 	doFiling("1. registration.data", "2. capacity.room", "3. general.info");
-
+	
 	// Our population containing random DNA
 	// Every single DNA in the population is
 	// randomized and its fitness is set to 0
@@ -63,14 +67,23 @@ auto main() -> int   {
 		                                                                                        .members.at(0).
 		                                                                                        fitnessOfDNA <<
 			"/" << MAX_FITNESS_DNA << std::endl;
+
 		// Checking if fitness is not changing
-		if (population.members.at(0).fitnessOfDNA == fitn) {
-			fitnCount++;
-			if(fitnCount==10) {
-				fitnprocess = true;
+		// If 10 generations are same then stop
+		// the algorithm then apply local search
+		if (population.members.at(0).fitnessOfDNA == currentMaxFitness) {
+			repeatCount++;
+			if (repeatCount == ALLOWED_REPETITION) {
+				// Storing the fittest as the population is sorted
+				fit = population.members.at(0);
+				stopAlgorithm = true;
 				break;
 			}
-		} else if(fitn != population.members.at(0).fitnessOfDNA) { fitn = population.members.at(0).fitnessOfDNA; }
+		}
+		else if (currentMaxFitness != population.members.at(0).fitnessOfDNA) {
+			currentMaxFitness = population.members.at(0).fitnessOfDNA;
+			repeatCount = 0;
+		}
 
 
 		// Choose 'x' number of parents with highest
@@ -86,9 +99,17 @@ auto main() -> int   {
 
 		// goal = true; //For debugging purposes
 	}
-
+	
 	if (goal) { std::cout << "\nMax fitness is : " << fit.fitnessOfDNA << "\n"; }
-	if(fitnprocess) { std::cout << "\nFitness is not changing: " << fitn << " -> Highest Fitness\n"; }
+	if (stopAlgorithm) {
+		std::cout << "\nFitness is not changing: " << currentMaxFitness << " -> Highest Fitness\n";
+		std::cout << "Now, applying local search.\n";
+		localSearch(fit);
+		if (fit.fitnessOfDNA == MAX_FITNESS_DNA) {
+			std::cout << "\nPerfect fitness achieved using Local Search which is: " << fit.fitnessOfDNA << "\n";
+		}
+		else { std::cout << "\nFitness after applying Local Search is: " << fit.fitnessOfDNA << "\n"; }
+	}
 
 	return 0;
 }

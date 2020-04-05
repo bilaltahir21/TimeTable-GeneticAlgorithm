@@ -149,6 +149,7 @@
     <ClInclude Include="4. Filing.h" />
     <ClInclude Include="4. GeneralMember.h" />
     <ClInclude Include="HashMap.h" />
+    <ClInclude Include="Improve.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Driver.cpp" />

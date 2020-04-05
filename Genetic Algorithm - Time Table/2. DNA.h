@@ -8,14 +8,14 @@ public:
 	int fitnessOfDNA;
 	
 	std::vector<Member> genes;
-	
+#pragma warning( disable : 26495 )
 	DNA() = default;
 	
 	DNA(const int numberOfDays) {
 		genes.resize(numberOfDays);
 		for (int i = 0; i < int(genes.size()); i++) {
 			courseCount = 0;
-			genes[i] = Member(examSlotsPerDay, noOfCourses,i);
+			genes[i] = Member(examSlotsPerDay, noOfCourses, i);
 		}
 		for (int i = 0; i < int(genes.size()); i++) {
 			courseCount = 0;
@@ -36,8 +36,12 @@ public:
 };
 
 // Condition to make a valid timetable
+// This section checks three exams on the same day
+// and generates new sequence for exams until a valid
+// sequence is generated.
 int stu = 0;
-void threeExamsCondition() {
+
+inline void threeExamsCondition() {
 	stu = 0;
 	// Dummy timetable to test the condition of three
 	// exams in the same day
@@ -62,8 +66,4 @@ void threeExamsCondition() {
 	if (stu > 0) { assignExams(); }
 }
 
-void threeExamsWrapper() {
-	while (stu>0) {
-		threeExamsWrapper();
-	}
-}
+inline void threeExamsWrapper() { while (stu > 0) { threeExamsWrapper(); } }

@@ -25,7 +25,7 @@ public:
 	 */
 	HashMap* map_course=nullptr;
 	HashMap* map_slot=nullptr;
-
+#pragma warning( disable : 26495 )
 	Member() = default;
 
 	Member(const int slotsPerDay, const int courses,int day) {
@@ -55,7 +55,7 @@ public:
 			if (int(map_course->hash.at(i).size()) > int(roomCapacity.size())) { capacityExceeded++; }
 		}
 	}
-	
+
 	int clashCount;
 	void checkClashes() {
 		clashCount = 0;
@@ -83,6 +83,8 @@ public:
 			}
 		}
 	}
+
+	/************************************************************************************************/
 
 	void randomize() {
 #pragma warning( disable : 4244 )
@@ -119,12 +121,8 @@ public:
 	}
 
 	void externallyRandomize() {
-		for (int& i : object) {
-			if(i !=-1) {
-				i = (rand() % slotsPerDay);
-			}
-		}
-		
+		for (int& i : object) { if (i != -1) { i = (rand() % slotsPerDay); } }
+
 		/* Prepare data for pre-processing */
 		// Storing course at index
 		if (!map_course) {

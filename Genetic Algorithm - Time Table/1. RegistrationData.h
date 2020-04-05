@@ -60,6 +60,6 @@ inline std::vector<std::vector<int>> studentRegistrationData(const std::string& 
 	registrationData.clear();
 	registrationData = transpose(data);
 	data.clear();
-	
+
 	return registrationData;
 }

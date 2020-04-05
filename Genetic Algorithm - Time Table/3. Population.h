@@ -57,9 +57,7 @@ inline void doMating(std::vector<DNA>& parents, const int mutationRate, int tota
 	int sizeOfDNA = int(parents.at(0).genes.size());
 	for (int i = 0; i < parents.size(); i = i + 2) {
 		const int howMuch = int(rand()) % int(parents.at(i).genes.size());
-		for (int j = 0; j < howMuch; j++) {
-			std::swap(parents.at(i).genes.at(j), parents.at(i + 1).genes.at(j));
-		}
+		for (int j = 0; j < howMuch; j++) { std::swap(parents.at(i).genes.at(j), parents.at(i + __int64(1)).genes.at(j)); }
 
 		// Doing mutation according to above parameters
 		if (rand() % 1000 < mutationRate) {
