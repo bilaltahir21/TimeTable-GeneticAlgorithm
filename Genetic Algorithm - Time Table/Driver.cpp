@@ -7,10 +7,10 @@
 // 1000 = 100% -> 1 = .01% mutation rate
 constexpr int MUTATION_RATE = 100;
 // Number of parents for cross-over
-constexpr int ELIGIBLE_PARENTS = 400;
+constexpr int ELIGIBLE_PARENTS = 40;
 // Our defined population size
 // Should be greater than "(2ELIGIBLE_PARENTS)"
-constexpr int POPULATION_SIZE = 1000;
+constexpr int POPULATION_SIZE = 100;
 /*----------------------------------------------*/
 int fitn = 0;
 int fitnCount = 0;

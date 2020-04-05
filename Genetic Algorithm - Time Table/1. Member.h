@@ -44,6 +44,7 @@ public:
 		whatRoomCapacity();
 	}
 
+	/******************************Section containing fitness conditions******************************/
 
 	// This number represents the times in which
 	// the total room capacity in increased
@@ -54,7 +55,7 @@ public:
 			if (int(map_course->hash.at(i).size()) > int(roomCapacity.size())) { capacityExceeded++; }
 		}
 	}
-
+	
 	int clashCount;
 	void checkClashes() {
 		clashCount = 0;
@@ -149,6 +150,6 @@ public:
 	void guageFitness(int maxFitness) {
 		checkCapacityLimits();
 		checkClashes();
-		this->fitness = maxFitness - ((capacityExceeded * 500) + (clashCount + 250));
+		this->fitness = maxFitness - ((capacityExceeded * 100) + (clashCount));
 	}
 };

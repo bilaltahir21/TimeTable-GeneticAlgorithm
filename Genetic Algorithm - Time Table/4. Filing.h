@@ -19,4 +19,10 @@ void doFiling(const std::string& registrationDataFile, const std::string& roomCa
 	/******************************************************************************/
 	doMaxDNAFitness();
 	assignExams();
+	// Condition about three exams in a day
+	// is checked here and the sequence is
+	// generated again again until perfect
+	// sequence is generated.
+	threeExamsCondition();
+	threeExamsWrapper();
 }

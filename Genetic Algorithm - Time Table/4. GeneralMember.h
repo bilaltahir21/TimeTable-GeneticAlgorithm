@@ -1,7 +1,5 @@
 #pragma once
 #include <random>
-
-
 #include "HashMap.h"
 
 // Data from "registration.data"
@@ -43,7 +41,7 @@ inline void assignExams() {
 	const int lowerBound = int(floor(noOfCourses / totalExamDays));
 	for (int i = 0; i<totalExamDays; i++) { examsInDay.at(i) = lowerBound; }
 	int examsLeft = noOfCourses - (lowerBound * totalExamDays);
-	for (int i = noOfCourses - 1; i >= 0 && examsLeft != 0; i--) {
+	for (int i = examsInDay.size() - 1; i >= 0 && examsLeft != 0; i--) {
 		examsInDay.at(i)++;
 		examsLeft--;
 	}
