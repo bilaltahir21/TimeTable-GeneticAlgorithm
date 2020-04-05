@@ -8,7 +8,7 @@
 inline std::vector<int> roomCapacityData(const std::string& fileName) {
 	//input stream for filing
 	std::ifstream inputFile(fileName);
-
+	
 	//if file is available
 	if (inputFile.fail()) {
 		std::cout << "File: " << fileName << " -> loading error!\n";
@@ -42,7 +42,7 @@ inline std::vector<int> roomCapacityData(const std::string& fileName) {
 			storage.clear();
 		}
 	}
-
+	
 	inputFile.close();
 
 	return roomCapacity;
